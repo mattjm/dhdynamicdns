@@ -7,15 +7,23 @@ import os
 
 def main():
     
-    
-    print("Content-type: text/html\n\n")
-    #Specify API Key and URL here
-    apiURL = 'https://api.dreamhost.com/'
-    apiKey=''
-    
+    #USER EDITABLE BELOW
+    #Specify API Key here
+    apiKey='ABCDEFGH'
     #specify domain name here
-    domainName = ''
+    domainName = 'dynamic.example.com'
+    #USER EDITABLE ABOVE
     
+    #this lets a web browser display the output of the program
+    print("Content-type: text/html\n\n")
+    
+    #the API URL shouldn't change, but if it does you can change it here
+    apiURL = 'https://api.dreamhost.com/'
+    
+   
+    #get the current date....ignore the 2015-01-01....for some reason
+    #a date is required to instantiate the class.  today() sets it to the
+    #current date
     myDate = datetime.datetime(year=2015,month=1,day=1).today()
     
     
