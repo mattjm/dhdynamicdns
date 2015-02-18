@@ -61,8 +61,8 @@ class DAL(object):
     def rqGET(self, values):
         myResponse = requests.get(self.baseURL, verify=False, params=values)
         #print(myResponse.request.headers)
-        print(myResponse.request.url)
-        print('DEBUG URL:' + self.baseURL) 
+        #print(myResponse.request.url)
+        #print('DEBUG URL:' + self.baseURL) 
         myResponse.close()
         return myResponse
     
