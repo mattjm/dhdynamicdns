@@ -15,7 +15,7 @@ def main():
     #Specify API Key here
     apiKey='ABC'
     #specify domain name here
-    domainName = ''
+    domainName = 'domain.example.com'
     #specify password below (NOT A PASSWORD YOU USE FOR ANYTHING ELSE)
     #This is just for this tool
     myPass = 'oneseventhree'
@@ -68,26 +68,22 @@ def main():
     shouldChange = True
     oldIP = ''
     recordisNew = False
-    
+    recordExists = False 
     #iterate through all records
     for x in allRecords['data']:
         #find the record we want
-        if x['record'] == domainName:
+        if x['record'] == domainName and not recordExists:
             #check the IP address in the record against the one we have right now
+            recordExists = True
             if x['value'] == currentlocalIP:
                 #we don't need to change it if it's the same
                 shouldChange = False
                 print('IP has not changed--no update needed.')
-                break
             else:
                 #If they aren't the same we need to know the old IP to delete the outdated record
                 #remember shouldChange was true when we created it so we don't need to change the flag
                 oldIP = x['value']
                 print('IP has changed--will proceed with update')
-                break
-        else:
-            #then this record didn't exist before
-            recordisNew = True
             
             
     #Only do the following if the IP isn't the same as it was before
@@ -105,8 +101,8 @@ def main():
                        'format':'json'}
         
         
-        #delete the outdated record, but only if this record didn't exist before (delete would fail)
-        if not recordisNew:
+        #delete the outdated record, but not if this record didn't exist before (delete would fail)
+        if recordExists:
             myrecordedit = myDAL.rqGET(values=myoldrecord)
             print(myrecordedit.text)
         
