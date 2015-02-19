@@ -1,17 +1,21 @@
- #!/home/username/bin/python3
+#!/home/mattjm/bin/python3
 import json
 import httpcalls
 import datetime
 import os
-
-
+import cgi
+import cgitb
 def main():
     
+    cgitb.enable()
     #USER EDITABLE BELOW
     #Specify API Key here
-    apiKey='ABCDEFGH'
+    apiKey='VL2HWUNHFV8U2HYY'
     #specify domain name here
-    domainName = 'dynamic.example.com'
+    domainName = 'pytest.mattjm.com'
+    #specify password below (NOT A PASSWORD YOU USE FOR ANYTHING ELSE)
+    #This is just for this tool
+    myPass = 'oneseventhree'
     #USER EDITABLE ABOVE
     
     #this lets a web browser display the output of the program
@@ -33,6 +37,14 @@ def main():
     #Magic to obtain external IP address
     currentlocalIP=os.environ['REMOTE_ADDR']
     print(currentlocalIP)
+    #Get password from query string via server variables
+    myData = cgi.FieldStorage()
+    givenPass = myData.getfirst('password','')
+    #check password
+    if givenPass != myPass:
+        print('Unauthorized')
+        exit()
+
     
     #First check the record and see if the IP address is the same as before
     #It's OK if this record doesn't exist yet--it will be created if it doesn't.  
@@ -63,11 +75,13 @@ def main():
                 #we don't need to change it if it's the same
                 shouldChange = False
                 print('IP has not changed--no update needed.')
+                break
             else:
                 #If they aren't the same we need to know the old IP to delete the outdated record
                 #remember shouldChange was true when we created it so we don't need to change the flag
                 oldIP = x['value']
                 print('IP has changed--will proceed with update')
+                break
         else:
             #then this record didn't exist before
             recordisNew = True
