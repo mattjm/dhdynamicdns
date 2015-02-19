@@ -4,19 +4,22 @@ import httpcalls
 import datetime
 import os
 import cgi
-import cgitb
+#import cgitb
+
 def main():
     
-    cgitb.enable()
-    #USER EDITABLE BELOW
+    #cgitb prints debugging information--generally leave off.  
+    #cgitb.enable()
+    
+    #-----USER EDITABLE BELOW-----
     #Specify API Key here
-    apiKey='VL2HWUNHFV8U2HYY'
+    apiKey='ABC'
     #specify domain name here
-    domainName = 'pytest.mattjm.com'
+    domainName = ''
     #specify password below (NOT A PASSWORD YOU USE FOR ANYTHING ELSE)
     #This is just for this tool
     myPass = 'oneseventhree'
-    #USER EDITABLE ABOVE
+    #-----USER EDITABLE ABOVE-----
     
     #this lets a web browser display the output of the program
     print("Content-type: text/html\n\n")
