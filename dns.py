@@ -49,8 +49,6 @@ def main():
         exit()
 
     
-    #First check the record and see if the IP address is the same as before
-    #It's OK if this record doesn't exist yet--it will be created if it doesn't.  
     
     #This dictionary will be turned into a querystring by the requests library.  It contains
     #all the required parameters for the API call
@@ -67,14 +65,14 @@ def main():
     #create some variables--we'll set them in the loop that follows
     shouldChange = True
     oldIP = ''
-    recordisNew = False
     recordExists = False 
     #iterate through all records
     for x in allRecords['data']:
-        #find the record we want
+        #if we find the record we want, let's do some stuff with it
         if x['record'] == domainName and not recordExists:
-            #check the IP address in the record against the one we have right now
+            #Let's make a note that the record exists
             recordExists = True
+            #check the IP address in the record against the one we have right now
             if x['value'] == currentlocalIP:
                 #we don't need to change it if it's the same
                 shouldChange = False
@@ -101,9 +99,10 @@ def main():
                        'format':'json'}
         
         
-        #delete the outdated record, but not if this record didn't exist before (delete would fail)
+        #delete the outdated record if it exists
         if recordExists:
             myrecordedit = myDAL.rqGET(values=myoldrecord)
+            #print the results
             print(myrecordedit.text)
         
         #Create new record
@@ -121,7 +120,7 @@ def main():
         
         #add the record
         myrecordedit = myDAL.rqGET(values=mynewrecord)
-        
+        #print the results
         print(myrecordedit.text)
    
         
