@@ -1,4 +1,4 @@
-#!/home/mattjm/local/bin/python
+#!/home/username/local/bin/python
 
 import json
 import httpcalls
@@ -14,12 +14,12 @@ def main():
     
     #-----USER EDITABLE BELOW-----
     #Specify API Key here
-    apiKey=u'ECU5R4HR63MGQ2NE'
+    apiKey=u'ABC'
     #specify domain name here
-    domainName = u'pytest.mattjm.com'
+    domainName = u'sub.domain.com'
     #specify password below (NOT A PASSWORD YOU USE FOR ANYTHING ELSE)
     #This is just for this tool
-    myPass = u'oneseventhreenine'
+    myPass = u'oneseventhree'
     #-----USER EDITABLE ABOVE-----
     
     #this lets a web browser display the output of the program
