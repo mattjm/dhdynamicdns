@@ -1,4 +1,4 @@
-#!/home/mattjm/local/bin
+#!/home/mattjm/local/bin/python
 
 import json
 import httpcalls
@@ -14,17 +14,17 @@ def main():
     
     #-----USER EDITABLE BELOW-----
     #Specify API Key here
-    apiKey=u'ABC'
+    apiKey=u'ECU5R4HR63MGQ2NE'
     #specify domain name here
-    domainName = u'domain.example.com'
+    domainName = u'pytest.mattjm.com'
     #specify password below (NOT A PASSWORD YOU USE FOR ANYTHING ELSE)
     #This is just for this tool
-    myPass = u'oneseventhree'
+    myPass = u'oneseventhreenine'
     #-----USER EDITABLE ABOVE-----
     
     #this lets a web browser display the output of the program
     print u"Content-type: text/html\n\n"
-    
+    print  
     #the API URL shouldn't change, but if it does you can change it here
     apiURL = u'https://api.dreamhost.com/'
     
