@@ -109,7 +109,7 @@ def main():
         #Create new record
         #This dictionary will be turned into a querystring by the requests library.  It contains
         #all the required parameters for the API call
-        mynewrecord = {u'record':u'pytest.mattjm.com',
+        mynewrecord = {u'record':domainName,
                        u'type':u'A',
                        u'value':currentlocalIP,
                        u'comment' : u'updated by mattjm python script at ' + unicode(myDate), 
